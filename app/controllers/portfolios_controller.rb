@@ -34,6 +34,9 @@ class PortfoliosController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
     # Use callbacks to share common setup or constraints
     def set_portfolio
