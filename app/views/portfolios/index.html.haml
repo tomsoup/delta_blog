@@ -4,10 +4,11 @@
 
 
 - @portfolios.each do |portfolio|
-  %p= portfolio.title
+  %p= link_to portfolio.title, portfolio_show_path(portfolio)
   %p= portfolio.subtitle
   %p= portfolio.body
   = image_tag portfolio.thumb_image unless portfolio.thumb_image.nil?
   = link_to "Edit Item", edit_portfolio_path(portfolio)
-  = link_to "Show Item", portfolio_path(portfolio)
+
+  = link_to 'Destroy', portfolio, method: :delete, data: { confirm: 'Are you sure?' }
 -#
