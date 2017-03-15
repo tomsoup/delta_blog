@@ -4,4 +4,5 @@
   %p= portfolio.title
   %p= portfolio.subtitle
   %p= portfolio.body
-  = image_tag portfolio.thumb_image
+  = image_tag portfolio.thumb_image unless portfolio.thumb_image.nil?
+-#
