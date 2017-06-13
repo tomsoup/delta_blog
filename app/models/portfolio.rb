@@ -1,13 +1,23 @@
 class Portfolio < ApplicationRecord
-  validates_presence_of :title, :body, :main_image, :thumb_image
   has_many :technologies
+  # data validation for nested attributes
+  # Portfolio.create!(title: "Web app", subtitle: "asdfasd", body: "dsasfasf", technologies_attributes: [{name: "Ruby"}, {name: "React"}, {name: "Angular"}])
+  accepts_nested_attributes_for :technologies,
+                                reject_if: lambda { |attrs| attrs['name'].blank? }
+
   include Placeholder
+  validates_presence_of :title, :body, :main_image, :thumb_image
 
   # def self.angular
   #   where(subtitle: 'React')
   # end
 
   #scope lamda name are arbitary and can be called in controller
+
+  def self.angular
+    where(subtitle: 'Angular')
+  end
+
   scope :ruby_on_rails, -> { where(subtitle: 'Ruby on Rails') }
 
   after_initialize :set_defaults
