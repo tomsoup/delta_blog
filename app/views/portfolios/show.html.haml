@@ -4,3 +4,10 @@
 %p= @portfolio.subtitle
 %p= @portfolio.body
 = image_tag @portfolio.thumb_image unless @portfolio.thumb_image.nil?
+
+%h2
+  Technologies Used:
+
+  - @portfolio.technologies.each do |tech|
+    %p
+      = tech.name
